@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Dropzone from '@/components/Dropzone';
 import SettingsBar from '@/components/SettingsBar';
 import FileList from '@/components/FileList';
-import AdPlaceholder from '@/components/AdPlaceholder';
+import AdsterraBanner from '@/components/AdsterraBanner';
 import { convertHeicToFormat } from '@/utils/converter';
 import { downloadZip } from '@/utils/zip';
 // file-saver imported dynamically
@@ -98,7 +98,7 @@ export default function Home() {
       </section>
 
       <div className="max-w-4xl mx-auto px-4">
-        <AdPlaceholder className="h-32 mb-12" />
+        <AdsterraBanner />
 
         {files.length > 0 && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -177,7 +177,7 @@ export default function Home() {
           </div>
         </section>
 
-        <AdPlaceholder className="h-32" />
+        <AdsterraBanner />
       </div>
     </div>
   );

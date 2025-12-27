@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Clock, Calendar, ChevronRight, Tag, User, Users, Star, ShieldCheck, X } from 'lucide-react';
-import AdPlaceholder from '@/components/AdPlaceholder';
+import AdsterraBanner from '@/components/AdsterraBanner';
 
 // FULL CONTENT STRATEGY (8 Posts)
 const BLOG_POSTS = [
