@@ -38,7 +38,7 @@ export default function AdsterraBanner() {
         <div
             ref={bannerRef}
             className="flex justify-center items-center my-6 overflow-hidden bg-gray-50 dark:bg-gray-800 rounded-lg border border-dashed border-gray-300 dark:border-gray-700"
-            style={{ minHeight: '100px', minWidth: '728px' }}
+            style={{ minHeight: '110px', minWidth: '728px' }}
         >
             {/* Ad yahan load hoga */}
         </div>
