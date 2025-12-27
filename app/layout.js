@@ -28,6 +28,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950`}>
 
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565053538249499"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
