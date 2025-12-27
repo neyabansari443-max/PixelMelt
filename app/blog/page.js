@@ -259,7 +259,7 @@ export default function Blog() {
                             {/* Insert Ad after every 4 posts */}
                             {(index + 1) % 4 === 0 && (
                                 <div className="md:col-span-2">
-                                    <AdPlaceholder className="h-32" />
+                                    <AdsterraBanner />
                                 </div>
                             )}
                         </div>
