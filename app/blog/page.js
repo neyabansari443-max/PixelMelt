@@ -198,10 +198,11 @@ export default function Blog() {
 
             {/* Header Section */}
             <div className="bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
-                <div className="max-w-6xl mx-auto px-4 py-16 text-center">
+                <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 text-center">
                     <span className="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2 block">
                         Knowledge Hub
                     </span>
+                    {/* Changed text-xl to text-3xl for mobile visibility */}
                     <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                         Everything about <br />
                         <span className="text-blue-600">Secure Image Conversion</span>
@@ -213,15 +214,16 @@ export default function Blog() {
             </div>
 
             {/* Blog Grid */}
-            <div className="max-w-6xl mx-auto px-4 py-12">
-                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+                {/* Added grid-cols-1 for explicit mobile layout */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
                     {BLOG_POSTS.map((post, index) => (
                         <div key={post.id} className="contents">
                             <article
                                 className="group flex flex-col bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                             >
                                 {/* Image Area */}
-                                <div className="h-56 w-full overflow-hidden relative bg-gray-100">
+                                <div className="h-48 md:h-56 w-full overflow-hidden relative bg-gray-100">
                                     <img
                                         src={post.image}
                                         alt={post.title}
@@ -232,7 +234,7 @@ export default function Blog() {
                                     </div>
                                 </div>
 
-                                <div className="p-6 flex-1 flex flex-col">
+                                <div className="p-5 md:p-6 flex-1 flex flex-col">
                                     <div className="flex items-center gap-4 text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">
                                         <span className="flex items-center gap-1"><Calendar size={12} /> {post.date}</span>
                                         <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
@@ -258,8 +260,20 @@ export default function Blog() {
 
                             {/* Insert Ad after every 4 posts */}
                             {(index + 1) % 4 === 0 && (
-                                <div className="md:col-span-2">
-                                    <AdsterraBanner />
+                                <div className="col-span-1 md:col-span-2 flex justify-center">
+                                    {(index + 1) === 4 ? (
+                                        <AdsterraBanner />
+                                    ) : (
+                                        <AdsterraBanner
+                                            placementKey="f5705adaff384f3131579da6032b0d65"
+                                            width={300}
+                                            height={250}
+                                        />
+                                    )}
+
+
+
+
                                 </div>
                             )}
                         </div>
@@ -269,7 +283,7 @@ export default function Blog() {
 
             {/* TRUSTED BY USERS SECTION */}
             <div className="max-w-4xl mx-auto px-4 mt-8 mb-12">
-                <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-center text-white shadow-xl relative overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 md:p-8 text-center text-white shadow-xl relative overflow-hidden">
                     <div className="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
                     <div className="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
 
@@ -285,7 +299,7 @@ export default function Blog() {
                             </div>
                         </div>
 
-                        <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                        <h3 className="text-2xl font-bold mb-2 flex items-center gap-2 flex-wrap justify-center">
                             Trusted by 1,000+ Users <ShieldCheck size={24} className="text-green-300" />
                         </h3>
                         <p className="text-blue-100 mb-6 max-w-lg">
@@ -307,9 +321,9 @@ export default function Blog() {
             {/* Modal */}
             {selectedPost && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-                    <div className="bg-white dark:bg-gray-900 w-full max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-200">
+                    <div className="bg-white dark:bg-gray-900 w-full max-w-3xl max-h-[85vh] md:max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-200">
                         {/* Modal Header Image */}
-                        <div className="h-48 w-full relative shrink-0">
+                        <div className="h-40 md:h-48 w-full relative shrink-0">
                             <img
                                 src={selectedPost.image}
                                 alt={selectedPost.title}
@@ -324,7 +338,7 @@ export default function Blog() {
                         </div>
 
                         {/* Modal Content */}
-                        <div className="p-8 overflow-y-auto">
+                        <div className="p-5 md:p-8 overflow-y-auto">
                             <div className="flex items-center gap-3 text-sm text-blue-600 font-medium mb-4">
                                 <span className="bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">
                                     {selectedPost.category}
@@ -333,18 +347,19 @@ export default function Blog() {
                                 <span className="text-gray-500 dark:text-gray-400">{selectedPost.date}</span>
                             </div>
 
-                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
                                 {selectedPost.title}
                             </h2>
 
                             <div
-                                className="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300"
+                                className="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 text-sm md:text-base"
                                 dangerouslySetInnerHTML={{ __html: selectedPost.content }}
                             />
 
-                            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden">
+                            {/* Responsive Footer: Stacks on mobile */}
+                            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <div className="flex items-center gap-3 w-full sm:w-auto">
+                                    <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden shrink-0">
                                         <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${selectedPost.author}`} alt="Author" />
                                     </div>
                                     <div>
@@ -354,7 +369,7 @@ export default function Blog() {
                                 </div>
                                 <button
                                     onClick={() => setSelectedPost(null)}
-                                    className="px-6 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-colors"
+                                    className="w-full sm:w-auto px-6 py-3 md:py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-colors text-center"
                                 >
                                     Close Article
                                 </button>

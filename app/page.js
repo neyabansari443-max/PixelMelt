@@ -177,7 +177,13 @@ export default function Home() {
           </div>
         </section>
 
-        <AdsterraBanner />
+        <div className="flex justify-center">
+          <AdsterraBanner
+            placementKey="f5705adaff384f3131579da6032b0d65"
+            width={300}
+            height={250}
+          />
+        </div>
       </div>
     </div>
   );
